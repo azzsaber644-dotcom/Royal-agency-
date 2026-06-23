@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="الوكالة الملكية - منصة Kachi للرسايل والمكالمات">
+    <title>الوكالة الملكية – Kachi | شغل رسايل ومكالمات من البيت 💎</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0284c7;
+            --primary-light: #0ea5e9;
+            --primary-lighter: #38bdf8;
+            --accent-gold: #f59e0b;
+            --accent-gold-dark: #b45309;
+            --bg-light: #f0f9ff;
+            --text-dark: #0c1e2e;
+            --text-light: #64748b;
+            --border-color: #93c5fd;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+        }
+
+        * {
+            font-family: 'Tajawal', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-light);
+            color: var(--text-dark);
+            padding-bottom: 90px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            border-bottom: 2px solid rgba(2, 132, 199, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            padding: 1rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .floating-actions {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            right: auto;
+            transform: translateX(-50%);
+            z-index: 150;
+            display: flex;
+            gap: 10px;
+            width: calc(100% - 40px);
+            max-width: 420px;
+            min-height: 56px;
+            padding: 0 20px;
+        }
+
+        .btn-pulse-fixed {
+            flex: 2;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            animation: pulseFixed 1.6s infinite;
+            padding: 12px 10px;
+            border-radius: 9999px;
+            font-weight: 900;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 0.8rem;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .btn-pulse-fixed:active {
+            transform: scale(0.95);
+        }
+
+        @keyframes pulseFixed {
+            0% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(14, 165, 233, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0); }
+        }
+
+        .btn-sim-float, .btn-telegram {
+            flex: 1;
+            padding: 10px 8px;
+            border-radius: 9999px;
+            font-weight: 800;
+            font-size: 0.65rem;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: none;
+            white-space: nowrap;
+            min-width: 60px;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+        }
+
+        .btn-sim-float {
+            background: white;
+            border: 2px solid var(--primary-light);
+            color: var(--primary);
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.15);
+        }
+
+        .btn-sim-float:hover, .btn-sim-float:active {
+            background: var(--primary-light);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .btn-telegram {
+            background: linear-gradient(135deg, #0088cc, #26a5e4);
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 136, 204, 0.2);
+        }
+
+        .btn-telegram:hover, .btn-telegram:active {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #006699, #1a8fc4);
+        }
+
+        .btn-sim-float.hidden-float, .btn-telegram.hidden-float {
+            display: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 16px;
+            }
+        }
+
+        .gradient-main {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light), var(--primary-lighter));
+        }
+
+        .gradient-gold {
+            background: linear-gradient(135deg, var(--accent-gold-dark), var(--accent-gold));
+        }
+
+        .text-gold {
+            background: linear-gradient(135deg, var(--accent-gold-dark), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            box-shadow: 0 8px 16px -4px rgba(14, 165, 233, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 9999px;
+            font-weight: 800;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary:hover, .btn-primary:active {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.4);
+        }
+
+        .motivation-card {
+            background: linear-gradient(145deg, #eff6ff, #dbeafe);
+            border: 2px solid var(--border-color);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .motivation-card:hover {
+            box-shadow: 0 15px 40px rgba(14, 165, 233, 0.12);
+        }
+
+        .agent-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.5rem;
+            font-weight: 800;
+            color: var(--accent-gold-dark);
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            padding: 3px 10px;
+            border-radius: 30px;
+            border: 1px solid var(--accent-gold);
+            box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
+            white-space: nowrap;
+        }
+
+        .step-img {
+            border-radius: 1.25rem;
+            border: 2px solid var(--border-color);
+            transition: transform 0.3s ease;
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .step-img:hover {
+            transform: scale(1.02);
+        }
+
+        .welcome-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            padding: 20px;
+            transition: opacity 0.5s ease;
+        }
+
+        .welcome-card {
+            background: linear-gradient(145deg, #eff6ff, #dbeafe);
+            border: 2px solid rgba(2, 132, 199, 0.3);
+            border-radius: 2rem;
+            max-width: 440px;
+            width: 100%;
+            padding: 30px 24px;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .welcome-card h2 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .welcome-card .features {
+            text-align: right;
+            margin: 20px 0;
+        }
+
+        .welcome-card .features div {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 10px 14px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            border: 1px solid rgba(2, 132, 199, 0.1);
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+        }
+
+        .btn-enter {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 9999px;
+            font-weight: 900;
+            font-size: 1.1rem;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3);
+            margin-top: 10px;
+        }
+
+        .btn-enter:hover, .btn-enter:active {
+            transform: scale(1.02);
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .btn-hero {
+            padding: 8px 14px;
+            border-radius: 9999px;
+            font-weight: 800;
+            font-size: 0.7rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border: 2px solid;
+            min-width: 100px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-hero-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .btn-hero-primary:hover, .btn-hero-primary:active {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.3);
+        }
+
+        .btn-hero-secondary {
+            background: white;
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-hero-secondary:hover, .btn-hero-secondary:active {
+            background: #eff6ff;
+            transform: translateY(-3px);
+        }
+
+        .price-card, .level-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 2px solid var(--border-color);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+
+        .price-card:hover, .level-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.08);
+        }
+
+        .level-card {
+            border-right: 6px solid var(--primary-light);
+            text-align: center;
+        }
+
+        .price-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .price-card .value {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .code-display {
+            background: linear-gradient(145deg, #eff6ff, #dbeafe);
+            padding: 18px 20px;
+            border-radius: 16px;
+            border: 2px dashed var(--primary);
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--primary);
+            letter-spacing: 8px;
+            margin: 10px 0 16px;
+            font-family: 'Courier New', monospace;
+            position: relative;
+            direction: ltr;
+            text-align: center;
+        }
+
+        .copy-btn {
+            background: rgba(2, 132, 199, 0.1);
+            border: 1px solid var(--primary-light);
+            transition: all 0.2s ease;
+            cursor: pointer;
+            padding: 2px 10px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .copy-btn:hover, .copy-btn:active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .code-modal-box, .sim-chat-box, .modal-box {
+            background: white;
+            border-radius: 2rem;
+            border: 2px solid var(--border-color);
+            padding: 28px 24px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+            max-width: 500px;
+            width: 95%;
+            margin: 0 auto;
+        }
+
+        .code-modal-box {
+            max-width: 460px;
+        }
+
+        .modal-box {
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .step-card, .article-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border-right: 6px solid var(--primary-light);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover, .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.08);
+        }
+
+        .step-card h3, .article-card h3 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-wrapper-vertical {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 185%;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .video-wrapper-vertical iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .sim-message {
+            animation: msgSlide 0.4s ease-out;
+            padding: 10px 12px;
+            border-radius: 12px;
+            margin: 5px 0;
+            word-wrap: break-word;
+        }
+
+        @keyframes msgSlide {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .sim-alert {
+            background: #fef2f2;
+            border: 2px solid var(--danger);
+            border-radius: 12px;
+            padding: 8px 14px;
+            margin: 6px 0;
+            font-weight: 800;
+            color: #991b1b;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            animation: alertPulse 1.2s infinite alternate;
+            flex-wrap: wrap;
+        }
+
+        .sim-alert.success {
+            background: #ecfdf5;
+            border-color: var(--success);
+            color: #065f46;
+        }
+
+        .sim-alert.warning {
+            background: #fffbeb;
+            border-color: var(--warning);
+            color: #92400e;
+        }
+
+        @keyframes alertPulse {
+            0% { opacity: 0.8; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.02); }
+        }
+
+        .faq-a {
+            transition: max-height 0.35s ease, opacity 0.35s ease;
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+        }
+
+        .faq-a.active {
+            opacity: 1;
+        }
+
+        .faq-q {
+            background: white;
+            border: 2px solid var(--border-color);
+            padding: 14px 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 800;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-align: right;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .faq-q:hover {
+            background: #eff6ff;
+            border-color: var(--primary);
+        }
+
+        .gem-float {
+            position: fixed;
+            font-size: 2rem;
+            animation: gemFly 1.5s ease-out forwards;
+            pointer-events: none;
+            z-index: 10000;
+        }
+
+        @keyframes gemFly {
+            0% {
+                opacity: 1;
+                transform: translateY(0) translateX(0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) translateX(50px) scale(0);
+            }
+        }
+
+        .sim-reply-btn {
+            transition: all 0.2s;
+            border: 2px solid var(--primary);
+            background: white;
+            color: var(--primary);
+            font-weight: 800;
+            padding: 10px 18px;
+            border-radius: 9999px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            width: 100%;
+            text-align: center;
+            animation: slideInReply 0.3s ease-out;
+        }
+
+        @keyframes slideInReply {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .sim-reply-btn:hover, .sim-reply-btn:active {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.02);
+        }
+
+        .sim-block-btn {
+            background: var(--danger);
+            color: white;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 9999px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+            animation: shake 0.5s ease-in-out infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .sim-block-btn:hover, .sim-block-btn:active {
+            background: #dc2626;
+            transform: scale(1.05);
+            animation: none;
+        }
+
+        .user-msg {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            color: var(--primary);
+            margin-left: auto;
+            max-width: 80%;
+            text-align: right;
+        }
+
+        .bot-msg {
+            background: #f3f4f6;
+            color: #1f2937;
+            margin-right: auto;
+            max-width: 80%;
+            text-align: right;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .text-2xl {
+                font-size: 1.5rem;
+            }
+
+            .text-3xl {
+                font-size: 1.875rem;
+            }
+
+            .text-4xl {
+                font-size: 2.25rem;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                gap: 8px;
+            }
+
+            .btn-hero {
+                font-size: 0.65rem;
+                padding: 6px 12px;
+                min-width: 90px;
+            }
+
+            .floating-actions {
+                bottom: 15px;
+            }
+
+            .btn-pulse-fixed {
+                font-size: 0.7rem;
+            }
+
+            .btn-sim-float, .btn-telegram {
+                font-size: 0.55rem;
+                padding: 8px 4px;
+                min-width: 50px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding-bottom: 85px;
+            }
+
+            .container {
+                padding: 0 12px;
+            }
+
+            .welcome-card {
+                padding: 24px 20px;
+            }
+
+            .welcome-card h2 {
+                font-size: 1.5rem;
+            }
+
+            .code-modal-box, .modal-box {
+                padding: 20px 16px;
+            }
+
+            .step-card, .article-card {
+                padding: 1rem;
+            }
+
+            .step-card h3, .article-card h3 {
+                font-size: 1rem;
+            }
+
+            .code-display {
+                font-size: 1.5rem;
+                letter-spacing: 4px;
+                padding: 14px 16px;
+            }
+
+            .floating-actions {
+                width: calc(100% - 30px);
+                gap: 8px;
+                bottom: 12px;
+                padding: 0 15px;
+            }
+
+            .btn-pulse-fixed {
+                font-size: 0.65rem;
+                padding: 10px 6px;
+            }
+
+            .btn-sim-float, .btn-telegram {
+                font-size: 0.5rem;
+                padding: 6px 3px;
+            }
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        button, input, textarea {
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #0f1419;
+                color: #e5e7eb;
+            }
+
+            .glass-nav {
+                background: rgba(15, 20, 25, 0.95);
+            }
+
+            .white {
+                background: #1a1f26;
+                color: #e5e7eb;
+            }
+
+            .modal-box, .code-modal-box, .sim-chat-box {
+                background: #1a1f26;
+                color: #e5e7eb;
+            }
+        }
+
+        .tips-section {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 2px solid var(--accent-gold);
+            border-radius: 1.5rem;
+            padding: 20px;
+            margin: 30px 0;
+        }
+
+        .tips-section h3 {
+            color: var(--accent-gold-dark);
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .tips-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-section li {
+            color: var(--accent-gold-dark);
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(180, 83, 9, 0.2);
+            font-weight: 700;
+        }
+
+        .tips-section li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- === المحتوى الرئيسي === -->
+    <div id="mainContent">
+        <!-- === التنقل === -->
+        <nav class="glass-nav">
+            <div class="nav-container">
+                <div style="font-weight: 900; font-size: 1.2rem;">👑 الوكالة الملكية</div>
+                <button id="menuBtn" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">☰</button>
+            </div>
+        </nav>
+
+        <!-- === المحتوى === -->
+        <div class="container" style="padding: 40px 20px;">
+            <!-- === القسم الرئيسي === -->
+            <section style="text-align: center; margin: 40px 0;">
+                <h1 style="font-size: 2.5rem; font-weight: 900; margin-bottom: 20px;" class="text-gold">💎 منصة Kachi – رسايل ومكالمات</h1>
+                <p style="font-size: 1.1rem; color: #666; margin-bottom: 20px;">✨ اشتغلي من موبايلك بسهولة وابدئي تكسبي فوراً</p>
+                
+                <div class="hero-buttons">
+                    <button class="btn-hero btn-hero-primary" onclick="openCodeModal()">📥 ابدأي الآن</button>
+                    <button class="btn-hero btn-hero-secondary" id="detailedExplanationBtn">📖 الشرح المفصل</button>
+                </div>
+
+                <div style="display: flex; justify-content: center; gap: 20px; margin-top: 30px; flex-wrap: wrap;">
+                    <div style="text-align: center;">
+                        <p style="font-size: 1.5rem; font-weight: 900;">✅</p>
+                        <p style="font-weight: 800;">رسايل ومكالمات</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <p style="font-size: 1.5rem; font-weight: 900;">💰</p>
+                        <p style="font-weight: 800;">سحب فوري</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <p style="font-size: 1.5rem; font-weight: 900;">🛡️</p>
+                        <p style="font-weight: 800;">خصوصية تامة</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- === نصائح وأرباح === -->
+            <section class="tips-section">
+                <h3>💡 كم تقدري تكسبي في ساعتين؟</h3>
+                <ul>
+                    <li>⏰ ساعتين شغل = حوالي 50-100 رسالة = 400-3000 ماسة = 0.7 - 5 دولار 💰</li>
+                    <li>🔥 لو كنتي في المستوى الثالث أو الرابع، الأرباح تزيد أكتر!</li>
+                    <li>🎧 المكالمات أسرع: مكالمة واحدة 10 دقائق = 700-8500 ماسة!</li>
+                    <li>📱 أفضل أوقات الشغل: المساء من 8 لـ 12 بالليل والنهار من 2 لـ 5</li>
+                </ul>
+            </section>
+
+            <!-- === نظام الأرباح === -->
+            <section style="margin: 60px 0;">
+                <h2 style="font-size: 1.8rem; font-weight: 900; text-align: center; margin-bottom: 30px;">💎 نظام الأرباح في Kachi</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                    <div class="price-card">
+                        <div class="icon">💬</div>
+                        <p style="font-weight: 700; margin-bottom: 10px;">الرسالة الترحيبية</p>
+                        <p class="value">8-30</p>
+                        <p style="font-size: 0.85rem; color: #666;">ماسة لكل رسالة</p>
+                    </div>
+
+                    <div class="price-card">
+                        <div class="icon">📨</div>
+                        <p style="font-weight: 700; margin-bottom: 10px;">الرسالة العادية</p>
+                        <p class="value">24-460</p>
+                        <p style="font-size: 0.85rem; color: #666;">ماسة لكل رسالة (حسب المستوى)</p>
+                    </div>
+
+                    <div class="price-card">
+                        <div class="icon">🎧</div>
+                        <p style="font-weight: 700; margin-bottom: 10px;">المكالمة الصوتية</p>
+                        <p class="value">70-850</p>
+                        <p style="font-size: 0.85rem; color: #666;">ماسة لكل دقيقة (حسب المستوى)</p>
+                    </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); border: 2px solid var(--accent-gold); border-radius: 1.5rem; padding: 20px; margin-top: 30px; text-align: center;">
+                    <p style="font-weight: 900; font-size: 1.2rem; color: var(--accent-gold-dark);">🔥 كل 6000 ماسة = 1 دولار</p>
+                    <p style="color: var(--accent-gold-dark); margin-top: 10px;">💵 سحب ذاتي فوري على فودافون كاش – أقل سحب يبدأ من 1 دولار</p>
+                </div>
+            </section>
+
+            <!-- === المستويات === -->
+            <section style="margin: 60px 0;">
+                <h2 style="font-size: 1.8rem; font-weight: 900; text-align: center; margin-bottom: 30px;">📈 المستويات وزيادة الأرباح</h2>
+                <p style="text-align: center; color: #666; margin-bottom: 30px;">كل ما ترتقي للمستوى الأعلى، سعر الرسالة والمكالمة يزيد معاكي 💰</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <div class="level-card">
+                        <p style="font-size: 2rem;">🥉</p>
+                        <p class="level">المستوى الأول</p>
+                        <p style="font-size: 0.9rem; margin: 5px 0;">8-30 ماسة للرسالة</p>
+                        <p style="font-size: 0.85rem; color: #666;">البداية – الرسايل من 8 لـ 30 ماسة</p>
+                    </div>
+
+                    <div class="level-card">
+                        <p style="font-size: 2rem;">🥈</p>
+                        <p class="level">المستوى الثاني</p>
+                        <p style="font-size: 0.9rem; margin: 5px 0;">30-150 ماسة للرسالة</p>
+                        <p style="font-size: 0.85rem; color: #666;">بعد 100 رسالة – الأرباح بتزيد</p>
+                    </div>
+
+                    <div class="level-card">
+                        <p style="font-size: 2rem;">🥇</p>
+                        <p class="level">المستوى الثالث</p>
+                        <p style="font-size: 0.9rem; margin: 5px 0;">150-300 ماسة للرسالة</p>
+                        <p style="font-size: 0.85rem; color: #666;">بعد 500 رسالة – أرباحك بتضاعف</p>
+                    </div>
+
+                    <div class="level-card">
+                        <p style="font-size: 2rem;">👑</p>
+                        <p class="level">المستوى الرابع (الماسي)</p>
+                        <p style="font-size: 0.9rem; margin: 5px 0;">300-460 ماسة للرسالة</p>
+                        <p style="font-size: 0.85rem; color: #666;">بعد 1500 رسالة – أعلى مستوى وأعلى أرباح</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- === نصائح ذهبية === -->
+            <section class="tips-section">
+                <h3>✨ نصائح ذهبية لبنات الشغل</h3>
+                <ul>
+                    <li>⚡ الرد السريع = الأرباح السريعة! كل ما تردي بسرعة، كل ما الزبايين يحبوا التعامل معاكي</li>
+                    <li>🎧 المكالمات = كنز! جاهزي نفسك للمكالمات الصوتية، لأنها بتديك أرباح عالية جداً</li>
+                    <li>📱 اتفقدي التطبيق كل ساعة! الرسايل بتيجي بسرعة، والمسؤول يقيّمك بناءً على ردك السريع</li>
+                    <li>🌙 السهر بالليل = أرباح! الساعات من 8 لـ 12 بالليل فيها طلب عالي جداً</li>
+                    <li>💬 تحدثي بأدب واحترافية! الزبايين بيفضلوا البنات الوديات واللي بترد بذوق</li>
+                    <li>🚫 حظري الزفت بلا تردد! لو واحد قليل أدب أو بيحاول يقول حاجة محرجة، احظريه فوراً واخدي مكافأة</li>
+                </ul>
+            </section>
+
+            <!-- === خطوات البدء === -->
+            <section style="margin: 60px 0;">
+                <h2 style="font-size: 1.8rem; font-weight: 900; text-align: center; margin-bottom: 30px;">📝 خطوات البدء والعمل بالتفصيل</h2>
+                
+                <div style="display: grid; gap: 20px;">
+                    <div class="step-card">
+                        <div style="display: flex; justify-content: space-between; align-items: start;">
+                            <div>
+                                <h3>01 📥 تحميل التطبيق</h3>
+                                <p style="font-size: 0.9rem; color: #666; margin-top: 8px;">قومي بتحميل تطبيق Kachi من خلال الرابط المخصص، أو ابحثي عنه في متجر التطبيقات.</p>
+                                <p style="font-size: 0.85rem; margin-top: 10px;">📱 متوفر على Android<br>📱 متوفر على iOS</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <h3>02 📝 التسجيل ووضع رمز الدعوة</h3>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 8px;">افتحي التطبيق، سجلي حساب جديد، واستخدمي رمز الدعوة في المكان المخصص:</p>
+                        <div style="background: linear-gradient(135deg, #0284c7, #0ea5e9); color: white; padding: 12px; border-radius: 12px; margin: 12px 0; text-align: center; font-weight: 900; font-size: 1.1rem; letter-spacing: 2px;">YZDPCB</div>
+                        <p style="font-size: 0.8rem; color: #666;">⚠️ تأكدي من وضع رمز الدعوة في المكان الصحيح عشان يتم تفعيل حسابك!</p>
+                    </div>
+
+                    <div class="step-card">
+                        <h3>03 🪪 التوثيق (تحقق الهوية)</h3>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 8px;">ضيفي أي صورة لك (حتى لو من الذكاء الاصطناعي) واضغطي على زر التوثيق.</p>
+                        <p style="font-size: 0.85rem; background: #ecfdf5; border-left: 4px solid var(--success); padding: 10px 12px; border-radius: 8px; margin-top: 10px; color: #065f46;">🔒 لا تقلقي! محدش هيشوف صورتك، الذكاء الاصطناعي هو اللي بيتأكد من هويتك فقط.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <h3>04 💬 ردي على الرسائل واكسبي الألماس</h3>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 8px;">بعد التوثيق، ابدأي ردي على الرسايل، كل رد بيديك ماسات حسب مستواك.</p>
+                        <p style="font-size: 0.85rem; margin-top: 10px; font-weight: 700;">جمعي 6000 ماسة واسحبي فلوسك فوراً على:</p>
+                        <p style="font-size: 0.85rem; margin-top: 8px;">💰 فودافون كاش<br>💰 أي محفظة إلكترونية</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- === الأسئلة الشائعة === -->
+            <section style="margin: 60px 0;">
+                <h2 style="font-size: 1.8rem; font-weight: 900; text-align: center; margin-bottom: 30px;">❓ الأسئلة الشائعة</h2>
+                
+                <div style="max-width: 700px; margin: 0 auto;">
+                    <button class="faq-q">
+                        <span>التسجيل مجاني؟</span>
+                        <span style="font-size: 1.2rem;">▼</span>
+                    </button>
+                    <div class="faq-a">
+                        <p style="background: #eff6ff; padding: 15px 16px; border-radius: 12px; color: var(--text-dark); margin-bottom: 10px;">أكيد مجاني 100%، ولا مليم هيتدفع.</p>
+                    </div>
+
+                    <button class="faq-q">
+                        <span>فايدة الكود YZDPCB؟</span>
+                        <span style="font-size: 1.2rem;">▼</span>
+                    </button>
+                    <div class="faq-a">
+                        <p style="background: #eff6ff; padding: 15px 16px; border-radius: 12px; color: var(--text-dark); margin-bottom: 10px;">بيربطك بفريق الدعم ويفعل السحب الذاتي.</p>
+                    </div>
+
+                    <button class="faq-q">
+                        <span>إزاي بجمع ماسات؟</span>
+                        <span style="font-size: 1.2rem;">▼</span>
+                    </button>
+                    <div class="faq-a">
+                        <p style="background: #eff6ff; padding: 15px 16px; border-radius: 12px; color: var(--text-dark); margin-bottom: 10px;">كل رسالة أو مكالمة بتديك ماسات، وكل 6000 ماسة = 1 دولار.</p>
+                    </div>
+
+                    <button class="faq-q">
+                        <span>المستويات بتزيد الأرباح؟</span>
+                        <span style="font-size: 1.2rem;">▼</span>
+                    </button>
+                    <div class="faq-a">
+                        <p style="background: #eff6ff; padding: 15px 16px; border-radius: 12px; color: var(--text-dark); margin-bottom: 10px;">أيوة، كل ما ترتقي للمستوى الأعلى، سعر الرسالة بيزيد من 8 لـ 460 ماسة، والمكالمة من 70 لـ 850 ماسة.</p>
+                    </div>
+
+                    <button class="faq-q">
+                        <span>السحب بياخد قد إيه؟</span>
+                        <span style="font-size: 1.2rem;">▼</span>
+                    </button>
+                    <div class="faq-a">
+                        <p style="background: #eff6ff; padding: 15px 16px; border-radius: 12px; color: var(--text-dark); margin-bottom: 10px;">فوري على فودافون كاش، أقل سحب 1 دولار (6000 ماسة).</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- === عن الوكالة === -->
+            <section style="margin: 60px 0; background: linear-gradient(145deg, #eff6ff, #dbeafe); border-radius: 2rem; padding: 30px 20px; text-align: center;">
+                <h2 style="font-size: 1.8rem; font-weight: 900; margin-bottom: 20px;">👑 عن الوكالة الملكية</h2>
+                <p style="color: #666; line-height: 1.8; margin-bottom: 15px;">الوكالة الملكية اتأسست في 2023 بهدف تمكين النساء اقتصادياً من خلال توفير فرص عمل حرة وآمنة. بنشتغل على منصة Kachi المتخصصة في الرسايل والمكالمات، وبنقدم دعم نسائي متكامل 24/7.</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-top: 30px;">
+                    <div>
+                        <p style="font-size: 1.5rem; font-weight: 900;">📅</p>
+                        <p style="font-weight: 800;">منذ 2023</p>
+                    </div>
+                    <div>
+                        <p style="font-size: 1.5rem; font-weight: 900;">👩‍👧‍👧</p>
+                        <p style="font-weight: 800;">+5,000 عضوة</p>
+                    </div>
+                    <div>
+                        <p style="font-size: 1.5rem; font-weight: 900;">🛡️</p>
+                        <p style="font-weight: 800;">بيئة آمنة</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- === الشهادات === -->
+            <section style="margin: 60px 0;">
+                <h2 style="font-size: 1.8rem; font-weight: 900; text-align: center; margin-bottom: 30px;">🗣️ تجارب حقيقية</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                    <div class="step-card">
+                        <p style="font-style: italic; color: #666; margin-bottom: 10px;">"بدأت من الصفر وفي أسبوع قدرت أسحب أول 5 دولار. الوكالة الملكية غيرت حياتي!"</p>
+                        <p style="font-weight: 900; color: var(--primary);">— سارة، القاهرة</p>
+                    </div>
+
+                    <div class="step-card">
+                        <p style="font-style: italic; color: #666; margin-bottom: 10px;">"المكالمات الصوتية هي السر! كل مكالمة بتديني 400 ماسة، أنا بعملها بدل 20 رسالة."</p>
+                        <p style="font-weight: 900; color: var(--primary);">— منى، الإسكندرية</p>
+                    </div>
+
+                    <div class="step-card">
+                        <p style="font-style: italic; color: #666; margin-bottom: 10px;">"الدعم النسائي هو اللي خلاني أثق في نفسي. دلوقتي أنا في المستوى الثالث والأرباح بتزيد."</p>
+                        <p style="font-weight: 900; color: var(--primary);">— ليلى، الجيزة</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- === التذييل === -->
+            <footer style="background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; padding: 40px 20px; border-radius: 2rem; margin-top: 60px; text-align: center;">
+                <p style="font-weight: 900; font-size: 1.2rem; margin-bottom: 10px;">الوكالة الملكية</p>
+                <p style="opacity: 0.9; margin-bottom: 20px;">منصة Kachi – رسايل ومكالمات</p>
+                
+                <p style="margin-bottom: 20px; opacity: 0.8;">📱 قناة الواتساب الدعم: support@royaltimo.online</p>
+                
+                <p style="opacity: 0.8; font-size: 0.85rem; margin-top: 20px;">© 2026 الوكالة الملكية – كل الحقوق محفوظة.</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- === مودال الكود === -->
+    <div id="codeModal" class="welcome-overlay" style="display: none;">
+        <div class="code-modal-box">
+            <button id="closeCodeModal" onclick="closeCodeModal()" style="position: absolute; top: 12px; left: 16px; font-size: 1.8rem; color: #94a3b8; cursor: pointer; background: none; border: none;">✕</button>
+            
+            <div style="font-size: 3rem; margin-bottom: 4px;">🔑</div>
+            <h3 style="font-weight: 900; font-size: 1.4rem; color: var(--text-dark); margin-bottom: 4px;">كود الدعوة الخاص بك</h3>
+            <p style="font-size: 0.8rem; color: #64748b; margin-bottom: 16px;">استخدمي هذا الكود عند التسجيل في تطبيق Kachi</p>
+            
+            <div style="background: #fef2f2; border: 2px solid var(--danger); border-radius: 12px; padding: 10px 14px; font-weight: 700; color: #991b1b; font-size: 0.8rem; margin-bottom: 14px;">⚠️ بدون هذا الكود لن نستطيع تفعيل حسابك!</div>
+            
+            <div class="code-display">YZDPCB</div>
+            
+            <button class="btn-primary" id="copyCodeBtn" onclick="copyCodeFromModal()" style="width: 100%;">📋 نسخ الكود</button>
+            
+            <p style="font-size: 0.65rem; color: #94a3b8; margin-top: 10px; text-align: center;">سيتم تحويلك خلال <span id="codeTimer">5</span> ثوانٍ...</p>
+        </div>
+    </div>
+
+    <!-- === مودال الشرح === -->
+    <div id="modal" class="welcome-overlay" style="display: none;">
+        <div class="modal-box">
+            <button id="closeModal" onclick="closeModal()" style="position: absolute; top: 12px; left: 16px; font-size: 1.8rem; color: #94a3b8; cursor: pointer; background: none; border: none; z-index: 5;">✕</button>
+            
+            <h2 id="modalTitle" style="font-weight: 900; font-size: 1.5rem; margin-bottom: 20px; color: var(--text-dark);"></h2>
+            <div id="modalBody" class="modal-body" style="font-size: 0.95rem; line-height: 1.8; color: #1e293b;"></div>
+        </div>
+    </div>
+
+    <!-- === المحاكاة === -->
+    <div id="simModal" class="welcome-overlay" style="display: none;">
+        <div class="sim-chat-box" style="max-width: 500px;">
+            <button id="closeSim" onclick="closeSimModal()" style="position: absolute; top: 12px; left: 16px; font-size: 1.8rem; color: #94a3b8; cursor: pointer; background: none; border: none;">✕</button>
+            
+            <h3 style="font-weight: 900; margin-bottom: 12px; color: var(--text-dark); text-align: center;">💬 اختبري الشغل معانا</h3>
+            
+            <div id="simAlertArea" style="margin-bottom: 10px;"></div>
+            <div id="simMessages" style="background: #f9fafb; border-radius: 12px; padding: 15px; max-height: 45vh; overflow-y: auto; margin-bottom: 12px; border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 8px;"></div>
+            
+            <div id="simRepliesContainer" style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px;"></div>
+            
+            <div id="simGiftContainer" style="display: none; text-align: center; padding: 20px; background: linear-gradient(135deg, #fef3c7, #fde68a); border-radius: 12px; margin-bottom: 12px; border: 2px solid var(--accent-gold); animation: slideIn 0.5s ease;">
+                <p style="font-size: 3rem; margin: 0;">💎✨</p>
+                <p style="font-weight: 900; color: var(--accent-gold-dark); font-size: 1.2rem; margin: 10px 0;">مكافأة 15,000 ماسة!</p>
+                <p style="color: var(--accent-gold-dark); font-weight: 700;">أنتِ عبقرية! حظيتي المستخدم قليل الأدب 👏</p>
+            </div>
+            
+            <div id="simFinalContainer" style="display: none; text-align: center; padding: 20px; background: linear-gradient(135deg, #ecfdf5, #dcfce7); border-radius: 12px; border: 2px solid var(--success); color: #065f46; animation: slideIn 0.5s ease;">
+                <p style="font-size: 2.5rem; margin: 0;">🌟👑</p>
+                <p style="font-weight: 900; font-size: 1.1rem; margin: 10px 0;">تمام التمام! أنتِ جاهزة 🚀</p>
+                <p style="margin-top: 8px;">دلوقتي ابدأي الشغل الحقيقي واكسبي معانا!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- === سكريبت === -->
+    <script>
+        function closeCodeModal() {
+            const modal = document.getElementById('codeModal');
+            modal.style.display = 'none';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'none';
+        }
+
+        function closeSimModal() {
+            const modal = document.getElementById('simModal');
+            modal.style.display = 'none';
+        }
+
+        function openCodeModal(event) {
+            if (event) event.preventDefault();
+            const modal = document.getElementById('codeModal');
+            const timer = document.getElementById('codeTimer');
+            
+            let countdown = 5;
+            timer.textContent = countdown;
+            modal.style.display = 'flex';
+            
+            const interval = setInterval(() => {
+                countdown--;
+                timer.textContent = countdown;
+                
+                if (countdown <= 0) {
+                    clearInterval(interval);
+                    closeCodeModal();
+                }
+            }, 1000);
+        }
+
+        function copyCodeFromModal() {
+            navigator.clipboard.writeText('YZDPCB').then(() => {
+                const btn = document.getElementById('copyCodeBtn');
+                btn.textContent = '✅ تم النسخ!';
+                setTimeout(() => {
+                    btn.textContent = '📋 نسخ الكود';
+                }, 2500);
+            });
+        }
+
+        function createGemFloat(x, y) {
+            const gem = document.createElement('div');
+            gem.className = 'gem-float';
+            gem.textContent = '💎';
+            gem.style.left = x + 'px';
+            gem.style.top = y + 'px';
+            document.body.appendChild(gem);
+            
+            setTimeout(() => gem.remove(), 1500);
+        }
+
+        function startSimulation() {
+            const simMessages = document.getElementById('simMessages');
+            const simReplies = document.getElementById('simRepliesContainer');
+            const simGift = document.getElementById('simGiftContainer');
+            const simFinal = document.getElementById('simFinalContainer');
+            const simAlert = document.getElementById('simAlertArea');
+            
+            simMessages.innerHTML = '';
+            simReplies.innerHTML = '';
+            simGift.style.display = 'none';
+            simFinal.style.display = 'none';
+            simAlert.innerHTML = '';
+
+            function addMessage(text, isUser = false) {
+                const div = document.createElement('div');
+                div.className = `sim-message ${isUser ? 'user-msg' : 'bot-msg'}`;
+                div.textContent = text;
+                simMessages.appendChild(div);
+                simMessages.scrollTop = simMessages.scrollHeight;
+            }
+
+            function addGems(amount) {
+                const div = document.createElement('div');
+                div.style.textAlign = 'center';
+                div.style.color = '#fbbf24';
+                div.style.fontWeight = '900';
+                div.style.animation = 'slideIn 0.3s ease';
+                div.innerHTML = `💎 +${amount} ماسة`;
+                simMessages.appendChild(div);
+                
+                const rect = simMessages.getBoundingClientRect();
+                createGemFloat(rect.left + rect.width / 2, rect.top);
+                
+                simMessages.scrollTop = simMessages.scrollHeight;
+            }
+
+            function showAlert(type, text) {
+                simAlert.innerHTML = '';
+                const alertDiv = document.createElement('div');
+                alertDiv.className = `sim-alert ${type}`;
+                let icon = '⚠️';
+                if (type === 'success') icon = '✅';
+                else if (type === 'warning') icon = '⚡';
+                alertDiv.innerHTML = `${icon} ${text}`;
+                simAlert.appendChild(alertDiv);
+            }
+
+            function showReplies(replies, callback) {
+                simReplies.innerHTML = '';
+                replies.forEach((reply, index) => {
+                    const btn = document.createElement('button');
+                    btn.className = 'sim-reply-btn';
+                    btn.textContent = reply;
+                    btn.style.animationDelay = `${index * 0.15}s`;
+                    btn.addEventListener('click', () => {
+                        simReplies.innerHTML = '';
+                        callback(reply);
+                    });
+                    simReplies.appendChild(btn);
+                });
+            }
+
+            setTimeout(() => {
+                addMessage('👤 المستخدم: السلام عليكم ورحمة الله');
+                
+                setTimeout(() => {
+                    showReplies(['وعليكم السلام ورحمة الله وبركاته'], (reply) => {
+                        addMessage(`👩 المضيفة: ${reply}`, true);
+                        addGems(15);
+                        
+                        setTimeout(() => {
+                            addMessage('👤 المستخدم: أنا جديد في التطبيق هل تساعديني؟');
+                            showReplies(['بكل سرور يا حبيبتي! كيفك انتي؟'], (reply2) => {
+                                addMessage(`👩 المضيفة: ${reply2}`, true);
+                                addGems(25);
+                                
+                                setTimeout(() => {
+                                    addMessage('👤 المستخدم: أنا تمام الحمد لله، شو اسمك؟');
+                                    showReplies(['اسمي ياسمين وأنا هنا لمساعدتك دايماً'], (reply3) => {
+                                        addMessage(`👩 المضيفة: ${reply3}`, true);
+                                        addGems(30);
+                                        
+                                        setTimeout(() => {
+                                            addMessage('👤 المستخدم: حلو يا ياسمين.... بدك رقمي الشخصي؟');
+                                            showAlert('warning', '⚠️ تنبيه: طلب معلومات شخصية! حظري!');
+                                            showReplies(['حظر وإبلاغ الإدارة فوراً'], (reply4) => {
+                                                addMessage(`👩 المضيفة: تم حظر المستخدم وتقديم بلاغ`, true);
+                                                addGems(15000);
+                                                
+                                                setTimeout(() => {
+                                                    simGift.style.display = 'block';
+                                                    setTimeout(() => {
+                                                        simFinal.style.display = 'block';
+                                                    }, 1500);
+                                                }, 500);
+                                            });
+                                        }, 500);
+                                    });
+                                }, 600);
+                            });
+                        }, 600);
+                    });
+                }, 800);
+            }, 200);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // === الأسئلة الشائعة ===
+            document.querySelectorAll('.faq-q').forEach(button => {
+                button.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const isActive = answer.classList.contains('active');
+                    
+                    document.querySelectorAll('.faq-a').forEach(a => {
+                        a.classList.remove('active');
+                        a.style.maxHeight = '0';
+                    });
+                    
+                    if (!isActive) {
+                        answer.classList.add('active');
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                    }
+                });
+            });
+
+            // === الشرح المفصل ===
+            document.getElementById('detailedExplanationBtn').addEventListener('click', () => {
+                const modal = document.getElementById('modal');
+                const body = document.getElementById('modalBody');
+                
+                body.innerHTML = `
+                    <p style="margin-bottom: 15px;">🙋‍♀️ ازيك يا قمر! 💖 الشغل معانا بسيط جداً على منصة Kachi</p>
+                    <p style="margin-bottom: 10px;">💸 <strong>مجاني 100%</strong> – ولا مليم هيتدفع</p>
+                    <p style="margin-bottom: 10px;">💰 <strong>سحب ذاتي</strong> – أقل حد 1 دولار (6000 ماسة)</p>
+                    <p style="margin-bottom: 10px;">🔞 <strong>السن</strong> – لازم تكوني 18 سنة فأكثر</p>
+                    <p style="margin-bottom: 10px;">💬 <strong>الشغل</strong> – رسايل ومكالمات، كل رد بيديك ماسات</p>
+                    <p style="margin-bottom: 10px;">📈 <strong>المستويات</strong> – كل ما ترتقي، سعر الرسالة والمكالمة بيزيد</p>
+                    <p style="margin-bottom: 10px;">🛡️ <strong>الأمان</strong> – تقدري تحظري أي شخص قليل أدب</p>
+                    <p>💎 <strong>المكاسب</strong> – كل 6000 ماسة = 1 دولار</p>
+                `;
+                
+                modal.style.display = 'flex';
+            });
+
+            // === المحاكاة ===
+            document.getElementById('simulateBtn')?.addEventListener('click', () => {
+                const modal = document.getElementById('simModal');
+                modal.style.display = 'flex';
+                startSimulation();
+            });
+
+            // === إغلاق المودالات ===
+            document.getElementById('codeModal').addEventListener('click', function(e) {
+                if (e.target === this) closeCodeModal();
+            });
+
+            document.getElementById('modal').addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+
+            document.getElementById('simModal').addEventListener('click', function(e) {
+                if (e.target === this) closeSimModal();
+            });
+        });
+
+        // === تبديل الأزرار العائمة ===
+        setInterval(() => {
+            const btnSim = document.getElementById('simulateBtn');
+            const btnTelegram = document.getElementById('btnTelegram');
+            
+            if (btnSim && btnTelegram) {
+                btnSim.classList.toggle('hidden-float');
+                btnTelegram.classList.toggle('hidden-float');
+            }
+        }, 10000);
+    </script>
+
+    <!-- === الأزرار العائمة === -->
+    <div class="floating-actions">
+        <button id="simulateBtn" class="btn-pulse-fixed">🎬 اختبري الآن</button>
+        <button id="btnTelegram" class="btn-telegram hidden-float" onclick="window.open('https://t.me/yourusername')">
+            <span style="font-size: 1.2rem;">✈️</span>
+            <span style="font-size: 0.5rem;">تيلجرام</span>
+        </button>
+    </div>
+</body>
+</html>
